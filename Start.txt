@@ -1,0 +1,32 @@
+package brickbreak;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+//시작화면
+class startP implements ActionListener
+{
+	private play f1;
+	private JButton next;
+	private ImageIcon SB = new ImageIcon("sbutton.png");
+	
+	public startP(play f) {
+		f1 = f;
+		f1.gP(1).setLayout(null);
+		next = new JButton(SB);
+		
+		next.addActionListener(this);
+		next.setBounds(330, 400, 150, 50);
+		f1.gP(1).add(next);
+	}
+		
+	public void actionPerformed(ActionEvent b)
+	{
+		if(b.getSource() == next) {
+			f1.gC().removeAll();
+			f1.gC().add(f1.gP(2));
+			f1.gC().revalidate();
+		}
+	}
+}
